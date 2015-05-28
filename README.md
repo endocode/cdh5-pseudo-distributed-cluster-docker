@@ -12,8 +12,6 @@ This is a fork of [Chalis pseudo distributed cluster docker image](https://githu
 The way of running services looks not optimal, but has not been changed
 
 
-The services installed are
-
 #####Installed services
 * HDFS
 * YARN
@@ -21,7 +19,6 @@ The services installed are
 * Oozie
 * PIG
 
-The
 
 ###Build the docker image
 
