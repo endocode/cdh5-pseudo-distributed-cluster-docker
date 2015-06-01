@@ -4,7 +4,13 @@ MAINTAINER Thomas Fricke <thomas@endocode.com>
 #Base image doesn't start in root
 WORKDIR /
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip procps lsof sudo
+ENV TERM dumb
+ENV GRADLE_HOME /gradle-2.4
+ENV PATH PATH=$PATH:$GRADLE_HOME/bin
+
+
+RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip procps lsof sudo git
+
 #Add the CDH 5 repository
 COPY conf/cloudera.list /etc/apt/sources.list.d/cloudera.list
 #Set preference for cloudera packages
@@ -42,6 +48,9 @@ RUN sudo -u oozie /usr/lib/oozie/bin/ooziedb.sh create -run && \
     wget http://archive.cloudera.com/gplextras/misc/ext-2.2.zip -O ext.zip && \
     unzip ext.zip -d /var/lib/oozie
 
+RUN wget https://services.gradle.org/distributions/gradle-2.4-bin.zip && unzip -l gradle-2.4-bin.zip 
+    
+    
 # NameNode (HDFS)
 EXPOSE 8020 50070
 
