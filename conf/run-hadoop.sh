@@ -23,6 +23,7 @@ sudo oozie-setup sharelib create -fs hdfs://localhost:8020 -locallib /usr/lib/oo
 
 service oozie start
 service hive-metastore start
+service hive-server2 start
 
 sleep 1
 

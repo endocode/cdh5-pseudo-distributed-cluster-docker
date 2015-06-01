@@ -22,7 +22,7 @@ RUN apt-get update
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
    apt-get install -y oracle-java7-installer && \
-   apt-get install -y zookeeper-server hadoop-conf-pseudo oozie pig hive hive-metastore
+   apt-get install -y zookeeper-server hadoop-conf-pseudo oozie pig hive hive-metastore hive-server2
 
 #Copy updated config files
 COPY conf/core-site.xml /etc/hadoop/conf/core-site.xml
