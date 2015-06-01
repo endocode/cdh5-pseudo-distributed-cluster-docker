@@ -22,8 +22,10 @@ sudo -u hdfs hadoop fs -chown oozie:oozie /user/oozie
 sudo oozie-setup sharelib create -fs hdfs://localhost:8020 -locallib /usr/lib/oozie/oozie-sharelib-yarn.tar.gz
 
 service oozie start
+service hive-metastore start
 
 sleep 1
 
 # tail log directory
 tail -n 1000 -f /var/log/hadoop-*/*.out
+

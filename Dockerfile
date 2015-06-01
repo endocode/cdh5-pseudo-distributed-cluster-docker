@@ -22,7 +22,7 @@ RUN apt-get update
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
    apt-get install -y oracle-java7-installer && \
-   apt-get install -y zookeeper-server hadoop-conf-pseudo oozie pig
+   apt-get install -y zookeeper-server hadoop-conf-pseudo oozie pig hive hive-metastore
 
 #Copy updated config files
 COPY conf/core-site.xml /etc/hadoop/conf/core-site.xml
@@ -30,6 +30,7 @@ COPY conf/hdfs-site.xml /etc/hadoop/conf/hdfs-site.xml
 COPY conf/mapred-site.xml /etc/hadoop/conf/mapred-site.xml
 COPY conf/hadoop-env.sh /etc/hadoop/conf/hadoop-env.sh
 COPY conf/yarn-site.xml /etc/hadoop/conf/yarn-site.xml
+COPY conf/hive-site.xml /etc/hive/conf/hive-site.xml
 
 #Format HDFS
 RUN sudo -u hdfs hdfs namenode -format
